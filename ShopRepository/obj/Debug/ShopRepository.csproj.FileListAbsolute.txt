@@ -1,0 +1,11 @@
+D:\MJX\C#\ShopWeb\ShopRepository\bin\Debug\ShopRepository.dll
+D:\MJX\C#\ShopWeb\ShopRepository\bin\Debug\ShopRepository.pdb
+D:\MJX\C#\ShopWeb\ShopRepository\bin\Debug\ShopModel.dll
+D:\MJX\C#\ShopWeb\ShopRepository\bin\Debug\ShopModel.pdb
+D:\MJX\C#\ShopWeb\ShopRepository\obj\Debug\ShopRepository.csprojAssemblyReference.cache
+D:\MJX\C#\ShopWeb\ShopRepository\obj\Debug\ShopRepository.csproj.CoreCompileInputs.cache
+D:\MJX\C#\ShopWeb\ShopRepository\obj\Debug\ShopRepository.csproj.CopyComplete
+D:\MJX\C#\ShopWeb\ShopRepository\obj\Debug\ShopRepository.dll
+D:\MJX\C#\ShopWeb\ShopRepository\obj\Debug\ShopRepository.pdb
+D:\tim_file\ShopWeb(2)\ShopRepository\obj\Debug\ShopRepository.csprojAssemblyReference.cache
+D:\tim_file\ShopWeb(2)\ShopRepository\obj\Debug\ShopRepository.csproj.CoreCompileInputs.cache

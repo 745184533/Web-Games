@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "h1+Ku6zZeHviFzfxBRluU786J0vOkXpV9UUM/mA9TBocnRDDRij9DjvRnMI+jlT1fbEDXQrTki8ujLyV2Mh81Q==",
+  "success": true,
+  "projectFilePath": "D:\\MJX\\C#\\ShopWeb\\ShopWeb.MySQL\\ShopWeb.MySQL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MJX\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\MJX\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
