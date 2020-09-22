@@ -56,15 +56,14 @@
                     @Html.ValidationMessageFor(now => now.mem_re_pwd, "", new { @class = "text-danger" })
                 </span>
             </div>
+            <input class="login-btn hover-btn" type="submit" value="注册" />
 
-                <input class="login-btn hover-btn" type="submit" value="注册" />
-
-                <div class="signup-link">
-                    <p>已有账户？ - @Html.ActionLink("登录", "Index", "Login")</p>
-                </div>
-                }
-
+            <div class="signup-link">
+                <p>已有账户？ - @Html.ActionLink("登录", "Index", "Login")</p>
             </div>
+        }
+
+    </div>
         </div>
     @*
         <div class="col-md-8 col-md-offset-2">

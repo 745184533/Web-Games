@@ -13,6 +13,7 @@
 
     @Scripts.Render("~/Content/js/js")
     @Scripts.Render("~/Content/vender/js")
+
     <link rel="icon" type="image/png" href="~/content/fav.png">
     <style>
         .uil-heart.has_liked
@@ -81,6 +82,7 @@
     <div class="wrapper" style="padding-top:60px;">
         @RenderBody()
     </div>
+
     <div class="copyright-text text-center mt-3">
         <i class="uil uil-copyright"></i>Copyright 2020 <b>MJX</b> . All rights <a href="" title="">researved</a>
     </div>
@@ -88,7 +90,7 @@
 
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script>
         $(function () {

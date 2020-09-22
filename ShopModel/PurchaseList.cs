@@ -9,6 +9,7 @@ namespace ShopModel
     public class PurchaseList
     {
         //public string mem_phone { set; get; }
+        public string plist_id { set; get; }
         public string goods_id { set; get; }
         public string goods_name { set; get; }
         public DateTime date { set; get; }

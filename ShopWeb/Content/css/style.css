@@ -1,58 +1,5 @@
 ﻿@charset "utf-8";
 
-/* ------------------------------------------------------------------
- * Name         : Gambo  
- * File         : style.css
- * Author       : Gambolthemes
- * Author URI   : gambol943@gmail.com
- * All Rights Reserved.
- * 更多模板：http://www.bootstrapmb.com/
- * --------------------------------------------------------------------- */
-
-
-/*===================== TABLE OF CONTENT =======================
-
-1. Google Fonts
-2. Typography Css
-3. CROSS BROWSER COMPATABILITY
-4. Body Scrollbar
-5. Night Mode Btn
-6. Search cate scroll
-7. Header
-8. Category Model
-9. Category Model
-10. Cart Offset Overlay
-11. Cart Radio Btn
-12. Quantity box
-13. Filters Overlay
-14. Category Radio Btn
-15. Index Page
-16. Slider Category
-17. Footer
-18. Product Grid Page
-19. Single Product View
-20. Single Product Radio Btn
-21. Checkout Page
-22. User Dashboard Page
-23. Dashboard My Orders
-24. My Rewards
-25. My Wallet
-26. My Addresses
-27. Career Page
-28. About Us
-29. Our Blog
-30. Blog Detail View
-31. Press Page
-32. Sign In
-33. Contact Us
-34. Product Request
-35. Faq Page
-36. Offers Page
-37. Bill Page
-
-=============================================================*/
-
-
 /* ================================================================================== 
  Google Fonts
 ===================================================================================== */
@@ -62,7 +9,6 @@
 Reset Css
 ===================================================================================== */
 
-html,
 body,
 div,
 span,
@@ -458,82 +404,6 @@ input[type=text] {
 }
 
 
-/* --- Night Mode Btn --- */
-
-.night_mode_switch__btn {
-    border-bottom: 1px solid #efefef;
-}
-
-.night_mode_switch__btn a {
-    display: block;
-    font-size: 14px;
-    transition: 0.3s;
-    font-weight: 500;
-    border-radius: 10px;
-    color: #333;
-    padding: 15px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 220px;
-}
-
-.night_mode_switch__btn a i {
-    font-size: 120%;
-    height: 30px;
-    Width: 30px;
-    background: #ffecec;
-    border-radius: 100%;
-    margin-right: 10px;
-    padding: 6px 4px 0;
-    display: inline-block;
-}
-
-.btn-night-mode .btn-night-mode-switch {
-    display: inline-block;
-    height: 18px;
-    width: 37px;
-    top: 35%;
-    right: 13px;
-    position: absolute;
-}
-
-
-/*--- search cate scroll ---*/
-
-.search-by-cat::-webkit-scrollbar {
-    width: 4px;
-}
-
-.search-by-cat::-webkit-scrollbar-thumb {
-    height: 50px;
-    background: hsla(0, 0%, 53.3%, 0.4);
-}
-
-.bs-canvas-body::-webkit-scrollbar {
-    width: 4px;
-}
-
-.bs-canvas-body::-webkit-scrollbar-thumb {
-    height: 50px;
-    background: hsla(0, 0%, 53.3%, 0.4);
-}
-
-.scrollstyle_4::-webkit-scrollbar {
-    width: 4px;
-    background-color: #f1f1f1;
-}
-
-.scrollstyle_4::-webkit-scrollbar-thumb {
-    background-color: #e5e5e5;
-}
-
-.scrollstyle_4::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
-    background-color: #F5F5F5;
-}
-
-
 /*--- Header ---*/
 
 .header {
@@ -650,7 +520,7 @@ i.icon1 {
     height: 35px;
     width: 35px;
     display: inline-block;
-    padding: 10px 5px;
+    padding: 8px 5px;
     border-radius: 100%;
 }
 
@@ -2815,7 +2685,7 @@ img.download-btn {
 
 .product-now li {
     margin-right: 5px;
-    width: 50px;
+    width: 70px;
     height: 36px;
     position: relative;
     text-align: center;
@@ -6246,8 +6116,20 @@ textarea {
 
 /* --- Sign In --- */
 
+.sign-inup:before {
+    content: "";
+    background: url("../image/banner.svg") no-repeat bottom;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-size: cover;
+    opacity: 0.05;
+}
+
 .sign-inup {
-    padding: 80px 0;
+    padding: 80px 0 0 0;
 }
 
 .sign-form {
@@ -6279,15 +6161,14 @@ textarea {
 }
 
 .form-dt {
-    margin-top: 50px;
     border: 1px solid #efefef;
     position: relative;
-    border-radius: 5px;
+    border-radius: 8px;
     background: #fff;
 }
 
 .form-inpts {
-    padding: 38px 30px 0;
+    padding: 20px 35px;
 }
 
 .form-title {

@@ -16,10 +16,9 @@ namespace ShopWeb.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public ActionResult Index(MemberSignViewModel memberSignViewModel)
         {
-            
+            ViewBag.SignUpErrorMessage = null;
             ShopBusinessLogic.LoginMember loginMember = new ShopBusinessLogic.LoginMember();
             //string userPhone = Request.Params["phone"];
             //string userPwd = Request.Params["password"];
@@ -27,17 +26,15 @@ namespace ShopWeb.Controllers
             string userName = memberSignViewModel.mem_name;
             string userPwd = memberSignViewModel.mem_pwd;
             string userRePwd = memberSignViewModel.mem_re_pwd;
-            string userAddress = memberSignViewModel.mem_address;
             if(ModelState.IsValid)
             {
-                if(loginMember.SignUpMemberByPhone(userPhone, userPwd,userName,userAddress))
+                if(loginMember.SignUpMemberByPhone(userPhone, userPwd,userName))
                 {
                     Session["mem_name"] = loginMember.GetMemberByPhone(userPhone).mem_name;
                     Session["mem_phone"] = loginMember.GetMemberByPhone(userPhone).mem_phone;
                     Session["mem_pwd"] = loginMember.GetMemberByPhone(userPhone).mem_pwd;
-                    Session["mem_address"] = loginMember.GetMemberByPhone(userPhone).mem_address;
                     Session["has_login"] = "true";
-                    Session.Timeout = 30;
+                    Session.Timeout = 10;
                     return Redirect("/Home");
                 }
                 else

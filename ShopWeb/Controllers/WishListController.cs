@@ -76,7 +76,7 @@ namespace ShopWeb.Controllers
                 mem_phone = Session["mem_phone"].ToString(),
                 wish_lists = wish_list,
             };
-            return View(resView);
+            return PartialView("WishListPart1",resView);
         }
 
     }

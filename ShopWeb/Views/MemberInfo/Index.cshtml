@@ -14,7 +14,6 @@
                     </div>
                     <h4>@Session["mem_name"].ToString()</h4>
                     <p>@Session["mem_phone"].ToString()</p>
-                    <p>@Session["mem_address"].ToString()</p>
                 </div>
             </div>
         </div>
@@ -30,6 +29,7 @@
                         <a href="@Url.Content("~/PurchaseCar")" class="user-item"><i class="uil uil-shopping-cart-alt"></i>我的购物车</a>
                         <a href="@Url.Content("~/WishList")" class="user-item"><i class="uil uil-heart"></i>我的收藏夹</a>
                         <a href="@Url.Content("~/MemberInfo")" class="user-item active"><i class="uil uil-user"></i>修改信息</a>
+                        <a href="@Url.Content("~/Address")" class="user-item"><i class="uil uil-location-point"></i>我的地址</a>
                         <a href="@Url.Content("~/Login/LoginOut")" class="user-item"><i class="uil uil-exit"></i>注销</a>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @*
                                 <div class="panel panel-default">
                                     <div class="panel-heading" id="headingThree" style="background-color:white;">
                                         <div class="panel-title">
@@ -169,6 +169,7 @@
                                             }
 
                                         </div>
+                                    *@
                                     </div>
                                 </div>
                             </div>

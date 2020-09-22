@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ShopWeb.Models
+@model AccountModels
+@{
     ViewBag.Title = "交易成功";
 }
 
@@ -9,15 +11,16 @@
             <div class="col-lg-6 col-md-8">
                 <div class="order-placed-dt">
                     <i class="uil uil-check-circle icon-circle"></i>
-                    <h2>支付成功！</h2>
-                    <p>感谢您的支持！</p>
+                    <h2>支付成功</h2>
+                    <p>感谢您的支持!</p>
                     <div class="delivery-address-bg">
                         <div class="title585">
                             <div class="pln-icon"><i class="uil uil-telegram-alt"></i></div>
                             <h4>送货地址为</h4>
                         </div>
                         <ul class="address-placed-dt1">
-                            <li><p><i class="uil uil-map-marker-alt"></i>地址详情 :<span>@Session["mem_address"]</span></p></li>
+                            <li><p><i class="uil uil-user"></i>收件人 :<span>@Session["mem_name"]</span></p></li>
+                            <li><p><i class="uil uil-map-marker-alt"></i>地址详情 :<span>@Model.address_text</span></p></li>
                             <li><p><i class="uil uil-phone-alt"></i>手机号 :<span>@Session["mem_phone"]</span></p></li>
                         </ul>
 

@@ -35,7 +35,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -67,7 +67,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -97,7 +97,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -128,7 +128,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -139,7 +139,7 @@ namespace ShopRepository.MySQL
 
         public List<PurchaseList> GetPurchaseLists(string mem_phone)
         {
-            string sql = "select plist_goods_id,plist_goods_name,plist_goods_num,plist_date,plist_goods_unit_price,plist_goods_total_price from purchaselists where plist_mem_phone=@mem_phone order by plist_date desc";
+            string sql = "select plist_id,plist_goods_id,plist_goods_name,plist_goods_num,plist_date,plist_goods_unit_price,plist_goods_total_price from purchaselists where plist_mem_phone=@mem_phone order by plist_date desc";
             var result = new List<PurchaseList>();
             using (MySqlConnection conn = new MySqlConnection(connectionstring))
             {
@@ -153,6 +153,7 @@ namespace ShopRepository.MySQL
                     {
                         result.Add(new PurchaseList()
                         {
+                            plist_id=reader.GetString("plist_id"),
                             goods_id=reader.GetString("plist_goods_id"),
                             goods_name=reader.GetString("plist_goods_name"),
                             goods_num=reader.GetInt32("plist_goods_num"),
@@ -163,7 +164,44 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public List<PurchaseList> GetPurchaseListsBySearchId(string mem_phone,string search_id)
+        {
+            string sql = "select plist_id,plist_goods_id,plist_goods_name,plist_goods_num,plist_date,plist_goods_unit_price,plist_goods_total_price from purchaselists where plist_mem_phone=@mem_phone and plist_id=@search_id order by plist_date desc";
+            var result = new List<PurchaseList>();
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.Add(new MySqlParameter("@mem_phone", mem_phone));
+                cmd.Parameters.Add(new MySqlParameter("@search_id", search_id));
+                try
+                {
+                    conn.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new PurchaseList()
+                        {
+                            plist_id=search_id,
+                            goods_id = reader.GetString("plist_goods_id"),
+                            goods_name = reader.GetString("plist_goods_name"),
+                            goods_num = reader.GetInt32("plist_goods_num"),
+                            date = reader.GetDateTime("plist_date"),
+                            unit_price = reader.GetFloat("plist_goods_unit_price"),
+                            total_price = reader.GetFloat("plist_goods_total_price"),
+                        });
+                    }
+                    reader.Close();
+                }
+                catch { }
                 finally
                 {
                     conn.Close();
@@ -197,7 +235,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -232,7 +270,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -255,7 +293,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     flag = false;
                 }
@@ -267,13 +305,14 @@ namespace ShopRepository.MySQL
             return flag;
         }
 
-        public bool AddPurchaseLists(string mem_phone,string goods_id,int num,DateTime date_time)
+        public bool AddPurchaseLists(string plist_id,string mem_phone,string goods_id,int num,DateTime date_time)
         {
             bool flag = true;
-            string sql = "insert into purchaselists set plist_mem_phone=@mem_phone , plist_goods_id=@goods_id ,plist_goods_name=@goods_name , plist_date=@date_time,plist_goods_num=@num,plist_goods_unit_price=@unit_price,plist_goods_total_price=@total_price";
+            string sql = "insert into purchaselists set plist_id=@plist_id , plist_mem_phone=@mem_phone , plist_goods_id=@goods_id ,plist_goods_name=@goods_name , plist_date=@date_time,plist_goods_num=@num,plist_goods_unit_price=@unit_price,plist_goods_total_price=@total_price";
             using (MySqlConnection conn = new MySqlConnection(connectionstring))
             {
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.Add(new MySqlParameter("@plist_id", plist_id));
                 cmd.Parameters.Add(new MySqlParameter("@mem_phone", mem_phone));
                 cmd.Parameters.Add(new MySqlParameter("@goods_id", goods_id));
                 cmd.Parameters.Add(new MySqlParameter("@goods_name", GetGoods(goods_id).goods_name));
@@ -286,7 +325,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     flag = false;
                 }
@@ -313,7 +352,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     flag = false;
                 }
@@ -339,7 +378,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex){}
+                catch {}
                 finally
                 {
                     conn.Close();
@@ -360,7 +399,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();
@@ -381,7 +420,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex) { }
+                catch  { }
                 finally
                 {
                     conn.Close();

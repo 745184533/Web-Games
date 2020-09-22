@@ -31,6 +31,11 @@ namespace ShopBusinessLogic
             return rp.GetPurchaseLists(mem_phone);
         }
 
+        public List<PurchaseList> getPurchaseListsBySearchId(string mem_phone,string search_id)
+        {
+            return rp.GetPurchaseListsBySearchId(mem_phone, search_id);
+        }
+
         public List<Goods> getGoodsList()
         {
             return rp.GetGoodsList();
@@ -51,9 +56,9 @@ namespace ShopBusinessLogic
             return rp.AddWishList(mem_phone, goods_id);
         }
 
-        public bool addPurchaseLists(string mem_phone,string goods_id,int num,DateTime dateTime)
+        public bool addPurchaseLists(string plist_id,string mem_phone,string goods_id,int num,DateTime dateTime)
         {
-            return rp.AddPurchaseLists(mem_phone, goods_id, num, dateTime);
+            return rp.AddPurchaseLists(plist_id,mem_phone, goods_id, num, dateTime);
         }
 
         public bool addPurchaseCar(string mem_phone,string goods_id,int num)

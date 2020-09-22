@@ -64,7 +64,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch { }
                 finally
                 {
                     conn.Close();
@@ -96,7 +96,7 @@ namespace ShopRepository.MySQL
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch { }
                 finally
                 {
                     conn.Close();

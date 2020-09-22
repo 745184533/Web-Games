@@ -32,12 +32,11 @@ namespace ShopRepository.MySQL
                             mem_phone = reader.GetString("mem_phone"),
                             mem_pwd = reader.GetString("mem_pwd"),
                             mem_name = reader.GetString("mem_name"),
-                            mem_address=reader.GetString("mem_address"),
                         };
                     }
                     reader.Close();
                 }
-                catch (Exception ex) { }
+                catch { }
                 finally
                 {
                     conn.Close();
@@ -46,23 +45,22 @@ namespace ShopRepository.MySQL
             return result;
         }
 
-        public bool SignUp_Member(string phone,string pwd,string name,string address)
+        public bool SignUp_Member(string phone,string pwd,string name)
         {
             bool flag = true;
-            string queryString = "insert into members set mem_phone=@phone , mem_pwd=@pwd , mem_name=@name ,mem_address=@address";
+            string queryString = "insert into members set mem_phone=@phone , mem_pwd=@pwd , mem_name=@name ";
             using (MySqlConnection conn = new MySqlConnection(connectionstring))
             {
                 MySqlCommand cmd = new MySqlCommand(queryString, conn);
                 cmd.Parameters.Add(new MySqlParameter("@phone", phone));
                 cmd.Parameters.Add(new MySqlParameter("@pwd", pwd));
                 cmd.Parameters.Add(new MySqlParameter("@name", name));
-                cmd.Parameters.Add(new MySqlParameter("@address", address));
                 try
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex) {
+                catch {
                     flag = false;
                 }
                 finally
@@ -72,6 +70,114 @@ namespace ShopRepository.MySQL
             }
             return flag;
         }
+
+        public List<Address> Show_MemberAddress(string phone)
+        {
+            string queryString = "select * from address where mem_phone=@phone order by address_tag desc";
+            var result = new List<Address>();
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                MySqlCommand cmd = new MySqlCommand(queryString, conn);
+                cmd.Parameters.Add(new MySqlParameter("@phone", phone));
+                try
+                {
+                    conn.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new Address()
+                        {
+                            address = reader.GetString("mem_address"),
+                            address_tag = reader.GetString("address_tag"),
+                        });
+                    }
+                    reader.Close();
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public bool Add_MemberAddress(string phone,string address,string address_tag)
+        {
+            bool flag = true;
+            string queryString = "insert into address set mem_phone=@phone , mem_address=@address ,address_tag=@address_tag ";
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                MySqlCommand cmd = new MySqlCommand(queryString, conn);
+                cmd.Parameters.Add(new MySqlParameter("@phone", phone));
+                cmd.Parameters.Add(new MySqlParameter("@address", address));
+                cmd.Parameters.Add(new MySqlParameter("@address_tag", address_tag));
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    flag = false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return flag;
+        }
+
+        public void Delete_MemberAddress(string phone,string address,string address_tag)
+        {
+            string sql = "delete from address where mem_phone=@phone and mem_address=@address and address_tag=@address_tag";
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.Add(new MySqlParameter("@phone", phone));
+                cmd.Parameters.Add(new MySqlParameter("@address", address));
+                cmd.Parameters.Add(new MySqlParameter("@address_tag", address_tag));
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /*
+        public void Modify_MemAddress(string phone, string old_address, string new_address,string old_address_tag,string new_address_tag)
+        {
+
+            //string queryString = "update address set mem_address=replace(mem_address , @old_address , @new_address) and address_tag=replace(address_tag , @old_address_tag , @new_address_tag) where mem_phone=@phone";
+            //string queryString = "update address set mem_address=@new_address and address_tag=@new_address_tag where mem_phone=@phone and mem_address=@old_address and address_tag=@old_address_tag";
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                MySqlCommand cmd = new MySqlCommand(queryString, conn);
+                cmd.Parameters.Add(new MySqlParameter("@phone", phone));
+                cmd.Parameters.Add(new MySqlParameter("@old_address", old_address));
+                cmd.Parameters.Add(new MySqlParameter("@new_address", new_address));
+                cmd.Parameters.Add(new MySqlParameter("@old_address_tag", old_address_tag));
+                cmd.Parameters.Add(new MySqlParameter("@new_address_tag", new_address_tag));
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+        */
 
         public void Modify_MemberName(string phone,string new_name)
         {
@@ -86,9 +192,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
-                }
+                catch{}
                 finally
                 {
                     conn.Close();
@@ -109,32 +213,7 @@ namespace ShopRepository.MySQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
-
-        public void Modify_MemAddress(string phone, string new_address)
-        {
-            string queryString = "update members set mem_address=@new_address where mem_phone=@phone ";
-            using (MySqlConnection conn = new MySqlConnection(connectionstring))
-            {
-                MySqlCommand cmd = new MySqlCommand(queryString, conn);
-                cmd.Parameters.Add(new MySqlParameter("@phone", phone));
-                cmd.Parameters.Add(new MySqlParameter("@new_address", new_address));
-                try
-                {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                }
+                catch{}
                 finally
                 {
                     conn.Close();

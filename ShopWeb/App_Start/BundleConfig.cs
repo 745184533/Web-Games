@@ -39,7 +39,6 @@ namespace ShopWeb
 
             bundles.Add(new StyleBundle("~/Content/vender/css").Include(
           "~/Content/vendor/bootstrap/css/bootstrap.min.css",
-
           "~/Content/vendor/fontawesome-free/css/all.min.css",
           "~/Content/vendor/OwlCarousel/assets/owl.carousel.css",
           "~/Content/vendor/OwlCarousel/assets/owl.theme.default.min.css",
@@ -47,10 +46,9 @@ namespace ShopWeb
           "~/Content/vendor/unicons-2.0.1/css/unicons.css"));
 
             bundles.Add(new StyleBundle("~/Content/vender/js").Include(
-"~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js",
-"~/Content/vendor/OwlCarousel/owl.carousel.js",
-"~/Content/vendor/semanticsemantic.min.js"
-));
+        "~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js",
+        "~/Content/vendor/OwlCarousel/owl.carousel.js",
+        "~/Content/vendor/semanticsemantic.min.js"));
         }
     }
 }

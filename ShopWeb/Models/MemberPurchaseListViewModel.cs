@@ -7,6 +7,8 @@ namespace ShopWeb.Models
 {
     public class MemberPurchaseListViewModel
     {
+        public string search_id { set; get; }
+        public string plist_id { set; get; }
         public string mem_phone { set; get; }
         public string goods_id { set; get; }
         public string goods_name { set; get; }

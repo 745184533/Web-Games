@@ -16,9 +16,30 @@ namespace ShopBusinessLogic
             return rp.Login_GetMemberByPhone(phone);
         }
 
-        public bool SignUpMemberByPhone(string phone,string pwd,string name,string address)
+        public bool SignUpMemberByPhone(string phone,string pwd,string name)
         {
-            return rp.SignUp_Member(phone, pwd, name,address);
+            return rp.SignUp_Member(phone, pwd, name);
+        }
+
+        public List<Address> ShowMemberAddress(string phone)
+        {
+            return rp.Show_MemberAddress(phone);
+        }
+
+        public bool AddMemberAddress(string phone,string address,string address_tag)
+        {
+            return rp.Add_MemberAddress(phone, address, address_tag);
+        }
+
+        public void DeleteMemberAddress(string phone,string address,string address_tag)
+        {
+            rp.Delete_MemberAddress(phone, address, address_tag);
+        }
+
+        public bool ModifyMemberAddress(string phone, string old_address,string new_address,string old_address_tag,string new_address_tag)
+        {
+            rp.Delete_MemberAddress(phone, old_address, old_address_tag);
+            return rp.Add_MemberAddress(phone, new_address, new_address_tag);
         }
 
         public void ModifyMemberName(string phone,string new_name)
@@ -29,11 +50,6 @@ namespace ShopBusinessLogic
         public void ModifyMemberPwd(string phone,string new_pwd)
         {
             rp.Modify_MemberPwd(phone, new_pwd);
-        }
-
-        public void ModifyMemberAddress(string phone, string new_address)
-        {
-            rp.Modify_MemAddress(phone, new_address);
         }
     }
 }

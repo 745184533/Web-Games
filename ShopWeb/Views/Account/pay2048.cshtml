@@ -63,7 +63,7 @@
 <div class="my2048">
     <header>
         <div style="height:100px;">
-            @using (Html.BeginForm("judge", "Account", FormMethod.Post, new { id = "score_form" }))
+            @using (Html.BeginForm("order_success", "Account", FormMethod.Post, new { id = "score_form" }))
             {
                 <div>
                     <span class="span_text">支付所需积分:</span><span class="scoreNum">@Model.all_price</span>
@@ -78,11 +78,12 @@
                 }
                 @Html.TextBoxFor(now => now.all_price, new { @type = "hidden", Value = Model.all_price })
                 @Html.TextBoxFor(now => now.score, new { @type = "hidden", Value = 0, id = "score_num" })
+                @Html.TextBoxFor(now=>now.address_text,new {@type="hidden",Value=Model.address_text })
                 <button type="submit" id="score_submit" style="visibility:hidden;" value="@Model.all_price"></button>
             }
         </div>
         <p class="tips" style="margin:0 0 10px 0">
-            tips:使用方向键控制,努力争取积分来支付吧！
+            tips:使用↑←↓→或WASD控制,努力争取积分来支付吧！
         </p>
     </header>
 

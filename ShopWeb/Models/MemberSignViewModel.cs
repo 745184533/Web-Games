@@ -21,8 +21,5 @@ namespace ShopWeb.Models
 
         [Required(AllowEmptyStrings =false, ErrorMessage ="用户名不能为空")]
         public string mem_name { set; get; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "地址不能为空")]
-        public string mem_address { set; get; }
     }
 }

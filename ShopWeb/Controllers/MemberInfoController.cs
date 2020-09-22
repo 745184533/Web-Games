@@ -37,7 +37,6 @@ namespace ShopWeb.Controllers
             string mem_phone = Session["mem_phone"].ToString();
             string new_pwd = memberModifyInfo.new_mem_pwd;
             string new_name = memberModifyInfo.new_mem_name;
-            string new_address = memberModifyInfo.new_mem_address;
             if (new_pwd != null)
             {
                 loginMember.ModifyMemberPwd(mem_phone, new_pwd);
@@ -47,11 +46,6 @@ namespace ShopWeb.Controllers
             {
                 loginMember.ModifyMemberName(mem_phone, new_name);
                 Session["mem_name"] = new_name;
-            }
-            if(new_address!=null)
-            {
-                loginMember.ModifyMemberAddress(mem_phone, new_address);
-                Session["mem_address"] = new_address;
             }
             return Redirect("MemberInfo");
         }

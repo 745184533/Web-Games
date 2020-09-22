@@ -39,11 +39,9 @@ namespace ShopWeb.Controllers
                     string mem_name = loginMember.GetMemberByPhone(userPhone).mem_name;
                     string mem_phone = loginMember.GetMemberByPhone(userPhone).mem_phone;
                     string mem_pwd = loginMember.GetMemberByPhone(userPhone).mem_pwd;
-                    string mem_address = loginMember.GetMemberByPhone(userPhone).mem_address;
                     Session["mem_name"] = mem_name;
                     Session["mem_phone"] = mem_phone;
                     Session["mem_pwd"] = mem_pwd;
-                    Session["mem_address"] = mem_address;
                     Session["has_login"] = "true";
                     Session.Timeout = 30;
                     if (Session["ReturnToPurchaseCar"] != null) return Redirect("/PurchaseCar");
@@ -88,11 +86,9 @@ namespace ShopWeb.Controllers
                     string mem_name = loginMember.GetMemberByPhone(userPhone).mem_name;
                     string mem_phone = loginMember.GetMemberByPhone(userPhone).mem_phone;
                     string mem_pwd = loginMember.GetMemberByPhone(userPhone).mem_pwd;
-                    string mem_address = loginMember.GetMemberByPhone(userPhone).mem_address;
                     Session["mem_name"] = mem_name;
                     Session["mem_phone"] = mem_phone;
                     Session["mem_pwd"] = mem_pwd;
-                    Session["mem_address"] = mem_address;
                     Session["has_login"] = "true";
                     Session.Timeout = 30;
                     return Redirect("/Home");
